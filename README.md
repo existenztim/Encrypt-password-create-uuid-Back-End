@@ -1,6 +1,6 @@
 # User Login & Registration
 This is the back-end part of this project.
-The front-end repo can be found here https://github.com/existenztim/Encrypt-password-create-uuid-Back-Front.
+The front-end repo can be found here https://github.com/existenztim/Encrypt-password-create-uuid-Front-End.
 
 The project allows users to create and log in to an account. The project is written in JavaScript and uses the Express framework, UUID library, and Crypto-JS for encryption.
 
