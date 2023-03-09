@@ -8,4 +8,4 @@ Upon registration, users will receive a unique UUID which will be stored on the 
 
 When the user attempts to log in, the server will decrypt the user's password and compare it to the input provided. If there is a match, the user will gain access to the account.
 
-![demo](https://github.com/existenztim/Encrypt-password-create-uuid-Front-Back/blob/development/demonstration/DEMO.png)
+![demo](https://github.com/existenztim/Encrypt-password-create-uuid-Back-End/blob/development/demonstration/DEMO.png)
