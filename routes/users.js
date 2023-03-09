@@ -15,22 +15,21 @@ fs.readFile('users.json', 'utf8', (err, data) => {
   }
 });
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
+/* Just for testing, use this function if a person has forgot their password*/
+// router.get('/', function(req, res, next) {
 
-  let userPassword = "testRobert";
-  console.log(userPassword); //test
+//   let userPassword = "replace this with encrypted password in users.json";
+//   console.log(userPassword); 
 
-  const encryptedPassword = CryptoJS.AES.encrypt(userPassword, "salt key").toString();
-  console.log(encryptedPassword); //random
+//   const encryptedPassword = CryptoJS.AES.encrypt(userPassword, "salt key").toString();
+//   console.log(encryptedPassword); 
 
-  const decryptedPassword = CryptoJS.AES.decrypt(encryptedPassword, "salt key").toString(CryptoJS.enc.Utf8);
-  console.log(decryptedPassword); //test
-  console.log(users);
-  res.send('respond with a resource');
-});
+//   const decryptedPassword = CryptoJS.AES.decrypt(encryptedPassword, "salt key").toString(CryptoJS.enc.Utf8);
+//   console.log(decryptedPassword); 
+//   res.send('respond with a resource');
+// });
 
-router.get('/data', function(req, res){
+router.get('/', function(req, res){
   fs.readFile('users.json', function(err, data){
     if(err){
       console.log(err)
@@ -84,9 +83,9 @@ router.post('/login', function(req, res, next) {
   const decryptedPassword =  encryptedPassword.toString(CryptoJS.enc.Utf8);
 
   if (foundUser && userPassword === decryptedPassword) {
-    res.status(201).json({userName: foundUser.userName, id: foundUser.id})
+    res.status(201).json({userName: foundUser.userName, id: foundUser.id, decryptedUserPassword:decryptedPassword, encryptedUserPassword:foundUser.userPassword})
   } else if (!foundUser) {
-    res.status(400).json('Username does not exist')
+    res.status(401).json('Username does not exist')
   } else {
     res.status(401).json("Incorrect password or username")
   }
